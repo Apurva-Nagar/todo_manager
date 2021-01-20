@@ -103,12 +103,6 @@ body {
   margin-right: 10px;
 }
 
-.TodoItem-overdueLabel {
-  margin-left: 10px;
-  color: #C53030;
-  font-size: 12px;
-}
-
 .TodoItem-delete {
   visibility: hidden;
   margin-left: 8px;
