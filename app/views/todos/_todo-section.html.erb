@@ -1,27 +1,27 @@
 <section class="TodoSection">
-    <div class="TodoSectionTitle">
-      <p class="TodoSectionTitle-text"><%= section_title %></p>
-      <p class="TodoSectionTitle-remainingCount"><%= todos.completed.count %> / <%= todos.count %></p>
-    </div>
-    <ul>
-        <% todos.all.each do |todo| %>
-          <li class="TodoItem">
-            <label class="TodoItem-container">
-              <% if todo.completed %>
-                <input class="TodoItem-checkbox" type="checkbox" checked>
-                <strike><%= todo.todo_text %></strike>
-              <% else %>
-                <input class="TodoItem-checkbox" type="checkbox">
-                <%= todo.todo_text %>
-              <% end %>
-              <% if show_due_date %>
-                <p class="TodoItem-date"><%= todo.due_date.to_s(:short) %></p>
-              <% end %>
-              <a class="TodoItem-delete" href="javascript:void(0)">
-                <img src="/delete.png">
-              </a>
-            </label>
-          </li>
-        <% end %>
-    </ul>
-  </section>
+  <div class="TodoSectionTitle">
+    <p class="TodoSectionTitle-text"><%= section_title %></p>
+    <p class="TodoSectionTitle-remainingCount"><%= todos.completed.count %> / <%= todos.count %></p>
+  </div>
+  <ul>
+      <% todos.all.each do |todo| %>
+        <li class="TodoItem">
+          <label class="TodoItem-container">
+            <% if todo.completed %>
+              <input class="TodoItem-checkbox" type="checkbox" checked>
+              <strike><%= todo.todo_text %></strike>
+            <% else %>
+              <input class="TodoItem-checkbox" type="checkbox">
+              <%= todo.todo_text %>
+            <% end %>
+            <% if show_due_date %>
+              <p class="TodoItem-date"><%= todo.due_date.to_s(:short) %></p>
+            <% end %>
+            <a class="TodoItem-delete" href="javascript:void(0)">
+              <img src="/delete.png">
+            </a>
+          </label>
+        </li>
+      <% end %>
+  </ul>
+</section>
