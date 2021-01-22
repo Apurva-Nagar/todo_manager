@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "/", to: redirect("/todos")
+  get "/", to: "home#index"
   resources :todos
   resources :users
   post "/users/login", to: "users#authenticate"
