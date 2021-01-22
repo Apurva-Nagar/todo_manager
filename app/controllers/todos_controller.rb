@@ -1,11 +1,14 @@
 class TodosController < ApplicationController
+  rescue_from ActiveRecord::RecordNotFound, with: :restricted_access
+
   def index
+    @todos = current_user.todos
     render "index"
   end
 
   def show
     id = params[:id]
-    todo = Todo.find(id)
+    todo = current_user.todos.find(id)
     render plain: todo.to_pleasant_string
   end
 
@@ -16,6 +19,7 @@ class TodosController < ApplicationController
       todo_text: todo_text,
       due_date: due_date,
       completed: false,
+      user_id: current_user.id,
     )
     redirect_to todos_path
   end
@@ -23,7 +27,7 @@ class TodosController < ApplicationController
   def update
     id = params[:id]
     completed = params[:completed]
-    todo = Todo.find(id)
+    todo = current_user.todos.find(id)
     todo.completed = completed
     todo.save!
     redirect_to todos_path
@@ -31,8 +35,12 @@ class TodosController < ApplicationController
 
   def destroy
     id = params[:id]
-    todo = Todo.find(id)
+    todo = current_user.todos.find(id)
     todo.destroy
     redirect_to todos_path
+  end
+
+  def restricted_access
+    render plain: "You don't have access to perfom this task!"
   end
 end
