@@ -9,6 +9,8 @@
 }
 
 .UserHeader {
+  display: flex;
+  justify-content: space-between;
   padding: 10px;
   background-color: lightgray;
   font-size: 14px;
