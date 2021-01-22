@@ -11,7 +11,8 @@ class SessionsController < ApplicationController
       session[:current_user_id] = user.id
       redirect_to todos_path
     else
-      render plain: "Incorrect password"
+      flash[:error] = "Your login attempt was in valid. Please try again."
+      redirect_to new_session_path
     end
   end
 

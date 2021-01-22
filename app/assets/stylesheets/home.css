@@ -16,3 +16,9 @@
   font-size: 14px;
   margin-bottom: 10px;
  }
+
+ .Flash-error {
+  color: darkred;
+  margin-bottom: 20px;
+  font-size: 16px;
+ }
