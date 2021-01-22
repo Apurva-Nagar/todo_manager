@@ -1,1 +1,8 @@
-<p>Welcome to the Todo homepage.<br/>If you are a new user, sign up here</p>
+<h1 class="Home-title">
+  Welcome to the Todo homepage.
+</h1>
+<h3 class="Home-authenticate">
+  If you are a new user, <%= link_to "sign up here", new_user_path %>
+  <br/>
+  If you are an existing user, <%= link_to "sign in here", new_session_path %>
+</p>
