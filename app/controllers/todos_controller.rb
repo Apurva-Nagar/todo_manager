@@ -14,14 +14,19 @@ class TodosController < ApplicationController
 
   def create
     todo_text = params[:todo_text]
-    due_date = DateTime.parse(params[:due_date])
-    new_todo = Todo.create!(
+    due_date = params[:due_date]
+    new_todo = Todo.new(
       todo_text: todo_text,
       due_date: due_date,
       completed: false,
       user_id: current_user.id,
     )
-    redirect_to todos_path
+    if new_todo.save
+      redirect_to todos_path
+    else
+      flash[:error] = new_todo.errors.full_messages.join(", ")
+      redirect_to todos_path
+    end
   end
 
   def update
@@ -41,6 +46,7 @@ class TodosController < ApplicationController
   end
 
   def restricted_access
-    render plain: "You don't have access to perfom this task!"
+    flash[:error] = "You don't have access to perfom this task!"
+    redirect_to todos_path
   end
 end
